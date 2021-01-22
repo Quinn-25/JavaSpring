@@ -18,7 +18,7 @@ import java.util.Optional;
 @Service
 public class NewsServiceImpl implements NewsService {
 
-    @Autowired
+    @Autowired //Dependency Injection -> Đọc thêm về Singleton Design Pattern -> Chỉ cho các class khác sử sụng Objectmà vẫn giữ nguyên thay vì tạo ra Object hoàn toàn mới
     NewsRepository newsRepository;
 
     @Override
@@ -30,31 +30,31 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public ResponseEntity<NewsResponseDto> createNews(NewsRequestDto newsRequestDto) {
-        News news = NewsMapper.createFromDto(newsRequestDto);
+        News news = NewsMapper.createFromDto(newsRequestDto); // Convert from Request to a Model
 
         news.setCreatedAt(new Date());
         news.setModifiedAt(new Date());
 
-        News createdNews = newsRepository.save(news);
+        News createdNews = newsRepository.save(news); // Assign that Model to createdNews to save to db
 
         return new ResponseEntity<>(NewsMapper.toDto(createdNews), HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<NewsResponseDto> updateNews(Long id, NewsRequestDto newsRequestDto) {
-        Optional<News> newsOptional = newsRepository.findById(id);
+        Optional<News> newsOptional = newsRepository.findById(id); // find the Model with requested ID
 
         if (!newsOptional.isPresent()) {
             throw new RuntimeException(String.format("Can not find news with id: %d", id));
         }
 
-        News news = newsOptional.get();
+        News news = newsOptional.get(); // assign foundModel
 
-        News updatedNews = NewsMapper.updateFromDto(news, newsRequestDto);
+        News updatedNews = NewsMapper.updateFromDto(news, newsRequestDto); // convert from Request to updatedModel then update the foundModel with updatedModel
 
-        updatedNews.setModifiedAt(new Date());
+        updatedNews.setModifiedAt(new Date()); // Update the modified date
 
-        newsRepository.save(updatedNews);
+        newsRepository.save(updatedNews); // Update the changes to DB
 
         return new ResponseEntity<>(NewsMapper.toDto(updatedNews), HttpStatus.OK);
     }

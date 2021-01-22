@@ -11,7 +11,7 @@ public class NewsMapper {
 
     private NewsMapper() {};
 
-    public static NewsResponseDto toDto(News news) { // tuong dương hàm GET -> chuyển từ 1 response trả ra 1 model(database)
+    public static NewsResponseDto toDto(News news) { // tuong dương hàm GET by ? (? dc khai bao tren Service) -> chuyen 1 model(database) thanh response cho frontend
         NewsResponseDto newsResponseDto = new NewsResponseDto();
 
         newsResponseDto.setId(news.getId());
@@ -29,7 +29,7 @@ public class NewsMapper {
         return newsResponseDto;
     }
 
-    public static List<NewsResponseDto> toListDto(List<News> newsList) { // tuong dương hàm GET -> lấy model(database) trả về response -> client
+    public static List<NewsResponseDto> toListDto(List<News> newsList) { //  tuong dương hàm GET -> chuyển từ 1 model(database) ra response -> trả ra client
         List<NewsResponseDto> newsResponseDtoList = new ArrayList<>();
 
         for (News newsItem : newsList) {
@@ -39,9 +39,11 @@ public class NewsMapper {
         return newsResponseDtoList;
     }
 
-    public static News createFromDto(NewsRequestDto newsRequestDto) {  // = POST -> lấy request từ client trả ra model
+    public static News createFromDto(NewsRequestDto newsRequestDto) {  // = POST -> lấy request từ client trả ra model -> cập nhật vào db
         News news = new News();
 
+        news.setCreatedBy(newsRequestDto.getCreatedBy());
+        news.setModifiedBy(newsRequestDto.getModifiedBy());
         news.setTitle(newsRequestDto.getTitle());
         news.setThumbnail(newsRequestDto.getThumbnail());
         news.setShortDescription(newsRequestDto.getShortDescription());
@@ -51,7 +53,7 @@ public class NewsMapper {
         return news;
     }
 
-    public static News updateFromDto(News news, NewsRequestDto newsRequestDto) {
+    public static News updateFromDto(News news, NewsRequestDto newsRequestDto) { // = UPDATE by ? -> lấy request từ client trả ra model -> cập nhật vào db
         if (newsRequestDto.getCreatedBy() != null) {
             news.setCreatedBy(newsRequestDto.getCreatedBy());
         }

@@ -24,7 +24,7 @@ public class NewsController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<?> updateNews(@PathVariable("id") Long id, NewsRequestDto newsRequestDto) {
+    public ResponseEntity<?> updateNews(@PathVariable("id") Long id, @RequestBody NewsRequestDto newsRequestDto) {
         return newsService.updateNews(id, newsRequestDto);
     }
 
