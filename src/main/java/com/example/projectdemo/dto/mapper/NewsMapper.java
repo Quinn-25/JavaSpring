@@ -11,7 +11,7 @@ public class NewsMapper {
 
     private NewsMapper() {};
 
-    public static NewsResponseDto toDto(News news) {
+    public static NewsResponseDto toDto(News news) { // tuong dương hàm GET -> chuyển từ 1 response trả ra 1 model(database)
         NewsResponseDto newsResponseDto = new NewsResponseDto();
 
         newsResponseDto.setId(news.getId());
@@ -29,7 +29,7 @@ public class NewsMapper {
         return newsResponseDto;
     }
 
-    public static List<NewsResponseDto> toListDto(List<News> newsList) {
+    public static List<NewsResponseDto> toListDto(List<News> newsList) { // tuong dương hàm GET -> lấy model(database) trả về response -> client
         List<NewsResponseDto> newsResponseDtoList = new ArrayList<>();
 
         for (News newsItem : newsList) {
@@ -39,11 +39,9 @@ public class NewsMapper {
         return newsResponseDtoList;
     }
 
-    public static News createFromDto(NewsRequestDto newsRequestDto) {
+    public static News createFromDto(NewsRequestDto newsRequestDto) {  // = POST -> lấy request từ client trả ra model
         News news = new News();
 
-        news.setCreatedBy(newsRequestDto.getCreatedBy());
-        news.setModifiedBy(newsRequestDto.getModifiedBy());
         news.setTitle(newsRequestDto.getTitle());
         news.setThumbnail(newsRequestDto.getThumbnail());
         news.setShortDescription(newsRequestDto.getShortDescription());

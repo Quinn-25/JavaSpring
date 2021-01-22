@@ -14,7 +14,7 @@ import java.util.Date;
 @Setter
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class NewsResponseDto {
+public class NewsResponseDto { //response request vào tầng dto thay vì trực tiếp vào model
 
     @JsonProperty("id")
     private Long id;

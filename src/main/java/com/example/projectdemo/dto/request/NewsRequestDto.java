@@ -17,8 +17,8 @@ import lombok.Setter;
 public class NewsRequestDto {
 
     @JsonProperty("title")
-
     private String title;
+
     @JsonProperty("thumbnail")
     private String thumbnail;
 
