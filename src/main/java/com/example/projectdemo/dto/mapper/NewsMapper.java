@@ -25,7 +25,6 @@ public class NewsMapper {
         newsResponseDto.setContent(news.getContent());
         newsResponseDto.setCategoryId(news.getCategoryId());
 
-
         return newsResponseDto;
     }
 

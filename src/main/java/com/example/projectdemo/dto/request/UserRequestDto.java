@@ -8,27 +8,27 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
 @Data
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class NewsRequestDto extends AbstractRequestDto{
+public class UserRequestDto extends AbstractRequestDto{
 
-    @JsonProperty("title")
-    private String title;
+    @JsonProperty("username")
+    private String userName;
 
-    @JsonProperty("thumbnail")
-    private String thumbnail;
+    @JsonProperty("full_name")
+    private String fullName;
 
-    @JsonProperty("short_description")
-    private String shortDescription;
+    @JsonProperty("password")
+    private String password;
 
-    @JsonProperty("content")
-    private String content;
+    @JsonProperty("status")
+    private Integer status;
 
-    @JsonProperty("category_id")
-    private Long categoryId;
+    @JsonProperty("role_id")
+    private Long roleId;
 
 }

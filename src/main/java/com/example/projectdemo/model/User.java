@@ -34,7 +34,7 @@ public class User {
     @Column(name = "username")
     private String username;
 
-    @Column(name = "fullName")
+    @Column(name = "full_name")
     private String fullName;
 
     @Column(name = "password")
@@ -44,6 +44,6 @@ public class User {
     private Integer status;
 
     @Column(name = "role_id")
-    private String roleId;
+    private Long roleId;
 
 }

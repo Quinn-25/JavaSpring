@@ -14,10 +14,7 @@ import java.util.Date;
 @Setter
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class NewsResponseDto { //response request vào tầng dto thay vì trực tiếp vào model
-
-    @JsonProperty("id")
-    private Long id;
+public class NewsResponseDto extends AbstractResponseDto{ //response request vào tầng dto thay vì trực tiếp vào model
 
     @JsonProperty("title")
     private String title;
@@ -33,17 +30,5 @@ public class NewsResponseDto { //response request vào tầng dto thay vì trự
 
     @JsonProperty("category_id")
     private Long categoryId;
-
-    @JsonProperty("created_at")
-    private Long createdAt;
-
-    @JsonProperty("created_by")
-    private String createdBy;
-
-    @JsonProperty("modified_at")
-    private Long modifiedAt;
-
-    @JsonProperty("modified_by")
-    private String modifiedBy;
 
 }

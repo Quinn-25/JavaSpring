@@ -1,6 +1,5 @@
 package com.example.projectdemo.dto.response;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -13,11 +12,21 @@ import lombok.Setter;
 @Setter
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CategoryResponseDto extends AbstractResponseDto {
+public class UserResponseDto extends  AbstractResponseDto{
 
-    @JsonProperty("name")
-    private String name;
+    @JsonProperty("username")
+    private String username;
 
-    @JsonProperty("code")
-    private String code;
+    @JsonProperty("full_name")
+    private String fullName;
+
+    @JsonProperty("password")
+    private String password;
+
+    @JsonProperty("status")
+    private Integer status;
+
+    @JsonProperty("role_id")
+    private Long roleId;
+
 }

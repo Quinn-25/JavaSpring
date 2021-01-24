@@ -64,7 +64,7 @@ public class NewsServiceImpl implements NewsService {
         Optional<News> newsOptional = newsRepository.findById(id);
 
         if (!newsOptional.isPresent()) {
-            throw new RuntimeException(String.format("Can not find news with id: %d", id));
+            throw new RuntimeException(String.format("Cannot find news with id: %d", id));
         }
 
         News news = newsOptional.get();

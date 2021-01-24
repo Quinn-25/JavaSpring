@@ -52,6 +52,8 @@ public class CategoryServiceImpl implements CategoryService {
 
         Category updateCategory = CategoryMapper.updateFromDto(category, categoryRequestDto);
 
+        updateCategory.setModifiedAt(new Date());
+
         categoryRepository.save(updateCategory);
 
         return new ResponseEntity<>(CategoryMapper.toDto(updateCategory), HttpStatus.OK);

@@ -37,13 +37,4 @@ public class Role {
     @Column(name = "code")
     private String code;
 
-    @Column(name = "password")
-    private String password;
-
-    @Column(name = "status")
-    private Integer status;
-
-    @Column(name = "role_id")
-    private String roleId;
-
 }
